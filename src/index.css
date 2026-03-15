@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #ffe645;
+  --color-accent: #fc5353;
+}
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@keyframes fadeUp {
+  0% {
+    /* opacity: 1; */
+    transform: translateY(0);
+  }
+  100% {
+    /* opacity: 0; */
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes barFill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+*,
+body {
+  cursor: url("./public/svg/cursor.svg"), auto;
+  /* transition: background-color 0.1s ease, color 0.1s ease; */
+}
+
+.hover\:text-\[color\]:hover {
+  color: var(--color);
+}
+
+.tech-row {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+}
