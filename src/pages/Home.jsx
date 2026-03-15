@@ -72,11 +72,12 @@ export function GithubBlock() {
 
 
 export function ProjectsBlock() {
-	const { language } = useGlobalContext();
+	const { language, setActiveSection } = useGlobalContext();
 	const t = translations[language].home;
 
 	return (
 		<div className="flex items-center justify-center w-full h-full" onClick={() => {
+			setActiveSection("Projects");
 			document.querySelector('#Projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
 		}}>
 			<div className="flex items-center gap-2 text-lg font-bold tracking-wide uppercase">

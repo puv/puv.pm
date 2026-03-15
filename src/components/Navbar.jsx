@@ -49,7 +49,7 @@ export default function Navbar({ scrollRef }) {
 	const [active, setActive] = useState("Home");
 	const [showIcons, setShowIcons] = useState(false);
 	const [darkMode, setDarkMode] = useState(document.documentElement.classList.contains("dark"));
-	const { language, setLanguage } = useGlobalContext();
+	const { language, setLanguage, activeSection, setActiveSection } = useGlobalContext();
 	const controls = useAnimation();
 
 	function scrollToSection(name) {
@@ -59,6 +59,10 @@ export default function Navbar({ scrollRef }) {
 			section.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
 		}
 	}
+
+	useEffect(() => {
+		setActive(activeSection || "Home");
+	}, [activeSection]);
 
 	function toggleDarkMode() {
 		setDarkMode(!darkMode);
@@ -181,6 +185,7 @@ export default function Navbar({ scrollRef }) {
 								active={active}
 								setActive={(val) => {
 									setActive(val);
+									setActiveSection(val);
 									scrollToSection(val); // 👈 scroll when clicked
 								}}
 								Icon={Icon}
