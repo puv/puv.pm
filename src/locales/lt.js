@@ -58,7 +58,16 @@ const lt = {
 	work: {
 		roadmap: "Karjiera",
 		message: "Atviras įkvepiančioms galimybėms.",
-		offer: "Susisiekime"
+		offer: "Susisiekime",
+		list: [
+			{
+				id: 1,
+				position: "Įrenginių Testavimo Praktika",
+				company: "",
+				duration: "Vasaris 2026 - Dabar",
+				description: ""
+			}
+		]
 	},
 	base: {
 		footer: "Sukurta su ❤️ naudojant React, Tailwind ir Framer Motion."

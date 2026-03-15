@@ -58,7 +58,16 @@ const en = {
 	work: {
 		roadmap: "Career Roadmap",
 		message: "Open to exciting opportunities. Let's",
-		offer: "connect"
+		offer: "connect",
+		list: [
+			{
+				id: 1,
+				position: "Device Testing Internship",
+				company: "",
+				duration: "February 2026 - Present",
+				description: "Testing and providing feedback on software."
+			}
+		]
 	},
 	base: {
 		footer: "Built with ❤️ using React, Tailwind, and Framer Motion."
