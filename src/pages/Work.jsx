@@ -56,7 +56,17 @@ export default function Work() {
 												) : null}
 											</div>
 											{item.company ? (
-												<p className="mt-1 text-sm font-medium text-primary">{item.company}</p>
+												<a
+													href={item.company.url}
+													target="_blank"
+													rel="noopener noreferrer"
+													style={{
+														color: item.company.color
+													}}
+													className="mt-1 text-sm font-medium hover:underline"
+												>
+													{item.company.name}
+												</a>
 											) : null}
 											<p className="mt-2 text-sm font-medium tracking-wide text-gray-600 dark:text-gray-400">{item.duration}</p>
 											{item.description ? (

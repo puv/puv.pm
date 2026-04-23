@@ -74,7 +74,11 @@ const lt = {
 			{
 				id: 1,
 				position: "Įrenginių Testavimo Praktika",
-				company: "Teltonika Networks",
+				company: {
+					name: "Teltonika Networks",
+					url: "https://teltonika-networks.com/",
+					color: "#0061fc"
+				},
 				duration: "Vasaris 2026 - Dabar",
 				description: "Testavau ir vertinau tinklo įrenginius, diagnozavau aparatinės ir programinės įrangos problemas bei sukūriau automatizuotą testavimo sistemą QA procesams optimizuoti.",
 				tech: ["Python", "Playwright"]

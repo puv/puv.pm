@@ -74,7 +74,11 @@ const en = {
 			{
 				id: 1,
 				position: "Device Testing Internship",
-				company: "Teltonika Networks",
+				company: {
+					name: "Teltonika Networks",
+					url: "https://teltonika-networks.com/",
+					color: "#0061fc"
+				},
 				duration: "February 2026 - Present",
 				description: "Tested and evaluated networking devices, diagnosed hardware and software issues, and developed an automated testing framework to streamline QA workflows.",
 				tech: ["Python", "Playwright"]
