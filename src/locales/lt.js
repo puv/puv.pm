@@ -55,8 +55,8 @@ const lt = {
 			},
 			{
 				id: 3,
-				name: "Kažkas naujo",
-				description: "Naujas projektas, prie kurio dirbu.",
+				name: "Spont",
+				description: "Socialinių susibūrimų programėlė, padedanti keliautojams ir vietiniams susipažinti per veiklas, vykstančias dabar. Ši programėlė dar ankstyvoje kūrimo stadijoje, tačiau jau dabar galite peržiūrėti jos pristatymo puslapį.",
 				image: "/images/project3.png",
 				tech: ["React", "Android"],
 				links: {

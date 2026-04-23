@@ -55,8 +55,8 @@ const en = {
 			},
 			{
 				id: 3,
-				name: "Something New",
-				description: "A new project I've been working on.",
+				name: "Spont",
+				description: "A social gathering app that helps travelers and locals meet through activities happening right now. This app is in early development, but you can check out the landing page now.",
 				image: "/images/project3.png",
 				tech: ["React", "Android"],
 				links: {
