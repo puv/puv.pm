@@ -23,7 +23,7 @@ export default function Work() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 				>
-					<div className="w-full border shadow-lg rounded-2xl border-gray-200/20 bg-white/15 p-6 backdrop-blur-md md:p-8 dark:bg-black/40">
+					<div className="w-full p-6 md:p-8">
 						<div className="mx-auto max-w-2xl">
 							<h2 className="text-3xl font-semibold tracking-tight text-accent">{t.roadmap}</h2>
 						</div>
@@ -40,7 +40,7 @@ export default function Work() {
 										viewport={{ once: true, amount: 0.4 }}
 										transition={{ duration: 0.4, delay: index * 0.1 }}
 									>
-										<span className="absolute left-0 top-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/70 bg-white/70 text-xs font-bold text-accent shadow-sm dark:bg-black/30">
+										<span className="absolute left-0 top-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-accent/100 bg-white/70 text-xs font-bold text-accent shadow-sm dark:bg-black/30">
 											{index + 1}
 										</span>
 
@@ -51,7 +51,7 @@ export default function Work() {
 												</h3>
 												{isCurrentRole(item.duration, language) ? (
 													<span className="inline-flex rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-300">
-														{language === "lt" ? "Šiuo metu" : "Currently"}
+														{t.current}
 													</span>
 												) : null}
 											</div>
@@ -63,6 +63,18 @@ export default function Work() {
 												<p className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
 													{item.description}
 												</p>
+											) : null}
+											{item.tech && item.tech.length > 0 ? (
+												<div className="mt-3 flex flex-wrap gap-2">
+													{item.tech.map((tag, i) => (
+														<span
+															key={i}
+															className="px-3 py-1 text-xs font-medium bg-gray-200 rounded-full dark:bg-gray-700"
+														>
+															{tag}
+														</span>
+													))}
+												</div>
 											) : null}
 										</div>
 									</motion.article>

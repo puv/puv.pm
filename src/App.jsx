@@ -91,31 +91,6 @@ function App() {
 
 	return (
 		<div className="relative flex flex-col min-h-screen overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-800 from-gray-100 via-gray-300 to-gray-100">
-			{/* Background Orb Layer
-			<motion.div className="hidden md:block absolute inset-0 h-full w-[400vw] pointer-events-none">
-				{orbs.map((color, i) => (
-					<motion.div
-						key={`orb-${i}`}
-						className={`absolute w-64 h-64 rounded-full blur-3xl ${color}`}
-						data-width={`${wW}, ${orbLayouts[0].map(o => o.x).join(", ")}, ${orbLayouts[1].map(o => o.x).join(", ")}, ${orbLayouts[2].map(o => o.x).join(", ")}`}
-						data-height={`${wH}, ${orbLayouts[0].map(o => o.y).join(", ")}, ${orbLayouts[1].map(o => o.y).join(", ")}, ${orbLayouts[2].map(o => o.y).join(", ")}`}
-						style={{
-							x: useTransform(sectionIndex, [0, 1, 2], [
-								orbLayouts[0][i]?.x,
-								orbLayouts[1][i]?.x,
-								orbLayouts[2][i]?.x,
-							]),
-							y: useTransform(sectionIndex, [0, 1, 2], [
-								orbLayouts[0][i]?.y,
-								orbLayouts[1][i]?.y,
-								orbLayouts[2][i]?.y,
-							]),
-						}}
-						transition={{ duration: 5, ease: "easeInOut" }}
-					/>
-				))}
-			</motion.div> */}
-
 			{/* Foreground */}
 			{/* <LoadingScreen /> */}
 			<Navbar scrollRef={scrollRef} />

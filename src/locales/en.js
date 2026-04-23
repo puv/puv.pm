@@ -52,6 +52,16 @@ const en = {
 				links: {
 					browser: "https://gwas.puv.pm"
 				}
+			},
+			{
+				id: 3,
+				name: "Something New",
+				description: "A new project I've been working on.",
+				image: "/images/project3.png",
+				tech: ["React", "Android"],
+				links: {
+					browser: "https://spont.party"
+				}
 			}
 		]
 	},
@@ -59,13 +69,15 @@ const en = {
 		roadmap: "Career Roadmap",
 		message: "Open to exciting opportunities. Let's",
 		offer: "connect",
+		current: "Current",
 		list: [
 			{
 				id: 1,
 				position: "Device Testing Internship",
-				company: "",
+				company: "Teltonika Networks",
 				duration: "February 2026 - Present",
-				description: "Testing and providing feedback on software."
+				description: "Tested and evaluated networking devices, diagnosed hardware and software issues, and developed an automated testing framework to streamline QA workflows.",
+				tech: ["Python", "Playwright"]
 			}
 		]
 	},

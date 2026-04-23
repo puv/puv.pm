@@ -52,6 +52,16 @@ const lt = {
 				links: {
 					browser: "https://gwas.puv.pm"
 				}
+			},
+			{
+				id: 3,
+				name: "Kažkas naujo",
+				description: "Naujas projektas, prie kurio dirbu.",
+				image: "/images/project3.png",
+				tech: ["React", "Android"],
+				links: {
+					browser: "https://spont.party"
+				}
 			}
 		]
 	},
@@ -59,13 +69,15 @@ const lt = {
 		roadmap: "Karjiera",
 		message: "Atviras įkvepiančioms galimybėms.",
 		offer: "Susisiekime",
+		current: "Dabartinis",
 		list: [
 			{
 				id: 1,
 				position: "Įrenginių Testavimo Praktika",
-				company: "",
+				company: "Teltonika Networks",
 				duration: "Vasaris 2026 - Dabar",
-				description: ""
+				description: "Testavau ir vertinau tinklo įrenginius, diagnozavau aparatinės ir programinės įrangos problemas bei sukūriau automatizuotą testavimo sistemą QA procesams optimizuoti.",
+				tech: ["Python", "Playwright"]
 			}
 		]
 	},
