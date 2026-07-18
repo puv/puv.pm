@@ -88,7 +88,14 @@ function App() {
 			{ x: 850, y: 450 }
 		],
 	];
-
+	if (window.location.pathname === "/screenshot") {
+		console.log("screenshot mode");
+		return (
+			<div ref={scrollRef} className="bg-black min-h-screen flex items-center justify-center min-w-screen overflow-hidden">
+				<Home />
+			</div>
+		);
+	}
 	return (
 		<div className="relative flex flex-col min-h-screen overflow-hidden bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-800 from-gray-100 via-gray-300 to-gray-100">
 			{/* Foreground */}

@@ -1,3 +1,26 @@
+import projectsData from "../data/projects";
+import workData from "../data/work";
+
+const formatMonthYear = (dateArray, locale) => {
+	if (!dateArray) return "";
+
+	const [year, month, day] = dateArray;
+	const date = new Date(year, month - 1, day);
+
+	const parts = new Intl.DateTimeFormat(locale, {
+		month: "long",
+		year: "numeric"
+	}).formatToParts(date);
+
+	const monthStr = parts.find((part) => part.type === "month")?.value;
+	const yearStr = parts.find((part) => part.type === "year")?.value;
+
+	// Capitalize first letter
+	const capitalizedMonth = monthStr ? monthStr.charAt(0).toUpperCase() + monthStr.slice(1) : "";
+
+	return [capitalizedMonth, yearStr].filter(Boolean).join(" ");
+};
+
 const en = {
 	home: {
 		greeting: "Hey! I'm",
@@ -31,60 +54,33 @@ const en = {
 		title: "Projects",
 		openBrowser: "Open in Browser",
 		github: "GitHub",
-		list: [
-			{
-				id: 1,
-				name: "CaptionFlow",
-				description: "A web app for generating live captions and translations from microphone input.",
-				image: "/images/project1.png",
-				tech: ["React", "Tailwind"],
-				links: {
-					browser: "https://subs.puv.pm",
-					github: "https://github.com/puv/livesubs"
-				}
-			},
-			{
-				id: 2,
-				name: "Weather Aggregation System",
-				description: "A web-app that aggregates weather data from various sources and displays it in a user-friendly manner.",
-				image: "/images/gwas.png",
-				tech: ["React", "Vite"],
-				links: {
-					browser: "https://gwas.puv.pm"
-				}
-			},
-			{
-				id: 3,
-				name: "Spont",
-				description: "A social gathering app that helps travelers and locals meet through activities happening right now. This app is in early development, but you can check out the landing page now.",
-				image: "/images/project3.png",
-				tech: ["React", "Android"],
-				links: {
-					browser: "https://spont.party"
-				}
-			}
-		]
+		list: projectsData.map((project) => ({
+			id: project.id,
+			name: project.name.en,
+			description: project.description.en,
+			image: project.image,
+			tech: project.tech,
+			links: project.links
+		}))
 	},
 	work: {
 		roadmap: "Career Roadmap",
 		message: "Open to exciting opportunities. Let's",
 		offer: "connect",
 		current: "Current",
-		list: [
-			{
-				id: 1,
-				position: "Device Testing Internship",
-				company: {
-					name: "Teltonika Networks",
-					url: "https://teltonika-networks.com/",
-					color: "#0061fc"
-				},
-				duration: "February 2026 - Present",
-				description: "Tested and evaluated networking devices, diagnosed hardware and software issues, and developed an automated testing framework to streamline QA workflows.",
-				tech: ["Python", "Playwright"]
-			}
-		]
+		list: workData.map((job) => ({
+			id: job.id,
+			position: job.position.en,
+			company: job.company,
+			duration: job.duration.end === null
+				? `${formatMonthYear(job.duration.start, "en-US")} - Present`
+				: `${formatMonthYear(job.duration.start, "en-US")} - ${formatMonthYear(job.duration.end, "en-US")}`,
+			description: job.description.en,
+			tech: job.tech,
+			isCurrent: job.duration.end === null
+		})).reverse()
 	},
+	formatMonthYear: (date) => formatMonthYear(date, "en-US"),
 	base: {
 		footer: "Built with ❤️ using React, Tailwind, and Framer Motion."
 	}

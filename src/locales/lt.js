@@ -1,3 +1,26 @@
+import projectsData from "../data/projects";
+import workData from "../data/work";
+
+const formatMonthYear = (dateArray, locale) => {
+	if (!dateArray) return "";
+
+	const [year, month, day] = dateArray;
+	const date = new Date(year, month - 1, day);
+
+	const parts = new Intl.DateTimeFormat(locale, {
+		month: "long",
+		year: "numeric"
+	}).formatToParts(date);
+
+	const monthStr = parts.find((part) => part.type === "month")?.value;
+	const yearStr = parts.find((part) => part.type === "year")?.value;
+
+	// Capitalize first letter
+	const capitalizedMonth = monthStr ? monthStr.charAt(0).toUpperCase() + monthStr.slice(1) : "";
+
+	return [capitalizedMonth, yearStr].filter(Boolean).join(" ");
+};
+
 const lt = {
 	home: {
 		greeting: "Sveiki! Aš esu",
@@ -31,60 +54,33 @@ const lt = {
 		title: "Projektai",
 		openBrowser: "Atidaryti Naršyklėje",
 		github: "GitHub",
-		list: [
-			{
-				id: 1,
-				name: "CaptionFlow",
-				description: "Internetinė programa, skirta generuoti tiesiogines subtitrus ir vertimus iš mikrofono įvesties.",
-				image: "/images/project1.png",
-				tech: ["React", "Tailwind"],
-				links: {
-					browser: "https://subs.puv.pm",
-					github: "https://github.com/puv/livesubs"
-				}
-			},
-			{
-				id: 2,
-				name: "Orų Agregavimo Sistema",
-				description: "Internetinė programa, kuri agreguoja orų duomenis iš įvairių šaltinių ir juos pateikia patogia forma.",
-				image: "/images/gwas.png",
-				tech: ["React", "Vite"],
-				links: {
-					browser: "https://gwas.puv.pm"
-				}
-			},
-			{
-				id: 3,
-				name: "Spont",
-				description: "Socialinių susibūrimų programėlė, padedanti keliautojams ir vietiniams susipažinti per veiklas, vykstančias dabar. Ši programėlė dar ankstyvoje kūrimo stadijoje, tačiau jau dabar galite peržiūrėti jos pristatymo puslapį.",
-				image: "/images/project3.png",
-				tech: ["React", "Android"],
-				links: {
-					browser: "https://spont.party"
-				}
-			}
-		]
+		list: projectsData.map((project) => ({
+			id: project.id,
+			name: project.name.lt,
+			description: project.description.lt,
+			image: project.image,
+			tech: project.tech,
+			links: project.links
+		}))
 	},
 	work: {
-		roadmap: "Karjiera",
+		roadmap: "Karjera",
 		message: "Atviras įkvepiančioms galimybėms.",
 		offer: "Susisiekime",
 		current: "Dabartinis",
-		list: [
-			{
-				id: 1,
-				position: "Įrenginių Testavimo Praktika",
-				company: {
-					name: "Teltonika Networks",
-					url: "https://teltonika-networks.com/",
-					color: "#0061fc"
-				},
-				duration: "Vasaris 2026 - Dabar",
-				description: "Testavau ir vertinau tinklo įrenginius, diagnozavau aparatinės ir programinės įrangos problemas bei sukūriau automatizuotą testavimo sistemą QA procesams optimizuoti.",
-				tech: ["Python", "Playwright"]
-			}
-		]
+		list: workData.map((job) => ({
+			id: job.id,
+			position: job.position.lt,
+			company: job.company,
+			duration: job.duration.end === null
+				? `${formatMonthYear(job.duration.start, "lt-LT")} - Dabar`
+				: `${formatMonthYear(job.duration.start, "lt-LT")} - ${formatMonthYear(job.duration.end, "lt-LT")}`,
+			description: job.description.lt,
+			tech: job.tech,
+			isCurrent: job.duration.end === null
+		})).reverse()
 	},
+	formatMonthYear: (date) => formatMonthYear(date, "lt-LT"),
 	base: {
 		footer: "Sukurta su ❤️ naudojant React, Tailwind ir Framer Motion."
 	}

@@ -19,15 +19,16 @@ const blocks = [
 
 
 function Typewriter({ text }) {
+	const isScreenshot = window.location.pathname === '/screenshot';
 	return (
 		<span>
 			{text.split("").map((letter, index) => (
 				<motion.span
 					key={index}
 					className="text-primary"
-					initial={{ opacity: 0 }}
+					initial={isScreenshot ? { opacity: 1 } : { opacity: 0 }}
 					animate={{ opacity: 1 }}
-					transition={{ delay: 1 + index * 0.1 }}
+					transition={isScreenshot ? { duration: 0 } : { delay: 1 + index * 0.1 }}
 				>
 					{letter}
 				</motion.span>
@@ -74,6 +75,7 @@ export function GithubBlock() {
 export function ProjectsBlock() {
 	const { language, setActiveSection } = useGlobalContext();
 	const t = translations[language].home;
+	const isScreenshot = window.location.pathname === '/screenshot';
 
 	return (
 		<div className="flex items-center justify-center w-full h-full" onClick={() => {
@@ -82,7 +84,7 @@ export function ProjectsBlock() {
 		}}>
 			<div className="flex items-center gap-2 text-lg font-bold tracking-wide uppercase">
 				{t.viewProjects}
-				<motion.div animate={{ x: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.2 }}>
+				<motion.div animate={isScreenshot ? {} : { x: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.2 }}>
 					<FaArrowRight className="text-xl" />
 				</motion.div>
 			</div>
@@ -111,6 +113,7 @@ export default function Home({ scrollRef }) {
 	const containerRef = useRef(null);
 	const { language } = useGlobalContext();
 	const t = translations[language].home;
+	const isScreenshot = window.location.pathname === '/screenshot';
 
 	useEffect(() => {
 		const handleMouseMove = (e) => {
@@ -131,7 +134,7 @@ export default function Home({ scrollRef }) {
 			<main className="flex items-center justify-center flex-1 px-6">
 				<motion.section
 					className="relative flex flex-col items-center justify-center w-full max-w-6xl text-center"
-					initial="hidden"
+					initial={isScreenshot ? "visible" : "hidden"}
 					animate="visible"
 					variants={containerVariants}
 				>
@@ -153,6 +156,7 @@ function HoverBlock({ block, mousePos, containerRef }) {
 	const ref = useRef(null);
 	const [localPos, setLocalPos] = useState({ x: 0, y: 0 });
 	const isMobile = window.innerWidth < 768;
+	const isScreenshot = window.location.pathname === '/screenshot';
 
 	useEffect(() => {
 		if (ref.current && containerRef.current) {
@@ -172,7 +176,7 @@ function HoverBlock({ block, mousePos, containerRef }) {
 		<motion.div
 			className={`col-span-${isMobile ? block.mW : block.w} row-span-${isMobile ? block.mH : block.h} flex rounded-lg items-center justify-center relative overflow-hidden`}
 			variants={blockVariants[block.side]}
-			transition={{ duration: 0.6, ease: "easeOut" }}
+			transition={{ duration: isScreenshot ? 0 : 0.6, ease: "easeOut" }}
 			ref={ref}
 		>
 			{/* Block content */}
